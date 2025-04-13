@@ -1,0 +1,41 @@
+services:
+  web:
+    build: ./ProyectoP1/
+    container_name: django_backend
+    command: >
+      python manage.py runserver 0.0.0.0:8000
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=DB_tienda_parcial_api
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - CORS_ALLOWED_ORIGINS=http://localhost:4200,http://angular-app:4200
+    volumes:
+      - ./ProyectoP1:/app
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - angular-app
+    networks:
+      - backend
+      - frontend
+
+  angular-app:
+    build: ./parcial_front/
+    container_name: angular_frontend
+    ports:
+      - "4200:4200"
+    environment:
+      - API_URL=http://web:8000
+    networks:
+      - frontend
+      - backend
+
+networks:
+  backend:
+    external: true
+  frontend:
+    driver: bridge
+
