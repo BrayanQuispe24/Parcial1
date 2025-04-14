@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p+o44m@4&@@#(qfeh-ecm1ls%d1puc4kn&pr-ydgbb41-f0l&a'
+SECRET_KEY ='django-insecure-p+o44m@4&@@#(qfeh-ecm1ls%d1puc4kn&pr-ydgbb41-f0l&a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
